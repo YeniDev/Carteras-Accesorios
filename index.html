@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCA BELLINI | Artículos de Cuero Premium</title>
+    <!-- Tipografías estilo editorial y firma caligráfica -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- Barra Superior Negra -->
+    <div class="top-bar">
+        3 A 6 CUOTAS SIN INTERESES CON TARJETAS VISA BCP & VISA BBVA. VER TÉRMINOS AQUÍ
+    </div>
+
+    <!-- Navbar Estilo Renzo Costa -->
+    <header class="navbar">
+        <div class="nav-container">
+            <!-- Buscador izquierdo -->
+            <div class="nav-buscador">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="inputBuscador" placeholder="¿Qué estás buscando?" oninput="buscarProductos()">
+            </div>
+
+            <!-- Menú izquierdo -->
+            <nav class="nav-menu-izq">
+                <a href="#coleccion" onclick="filtrarPorCategoria('todos')">LO NUEVO</a>
+                <a href="#coleccion" onclick="filtrarPorCategoria('hombre')">HOMBRE</a>
+                <a href="#coleccion" onclick="filtrarPorCategoria('mujer')">MUJER</a>
+            </nav>
+
+            <!-- Logo Central Caligráfico -->
+            <a href="#" class="logo-marca">
+                Luca Bellini
+                <span>Desde 1973</span>
+            </a>
+
+            <!-- Menú derecho -->
+            <nav class="nav-menu-der">
+                <a href="#servicios">SERVICIOS</a>
+                <a href="#editorial">COLECCIÓN</a>
+                <a href="#coleccion" onclick="filtrarPorCategoria('billeteras')">BILLETERAS</a>
+            </nav>
+
+            <!-- Iconos usuario y bolsa -->
+            <div class="nav-iconos">
+                <button class="icono-btn" onclick="abrirModalSuscripcion()" title="Mi cuenta">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <button class="icono-btn btn-bolsa" onclick="toggleCarrito()" title="Bolsa de compras">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="contadorCarrito" class="contador-bolsa">0</span>
+                </button>
+                <button class="btn-hamburguesa" onclick="toggleMenuMovil()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú desplegable móvil -->
+        <div id="menuMovil" class="menu-movil">
+            <a href="#coleccion" onclick="filtrarPorCategoria('todos'); toggleMenuMovil()">LO NUEVO</a>
+            <a href="#coleccion" onclick="filtrarPorCategoria('mujer'); toggleMenuMovil()">MUJER</a>
+            <a href="#coleccion" onclick="filtrarPorCategoria('hombre'); toggleMenuMovil()">HOMBRE</a>
+            <a href="#coleccion" onclick="filtrarPorCategoria('billeteras'); toggleMenuMovil()">BILLETERAS</a>
+            <a href="#servicios" onclick="toggleMenuMovil()">SERVICIOS</a>
+        </div>
+    </header>
+
+    <!-- Hero Principal Full Width -->
+    <section class="hero">
+        <img src="hero.jpg" alt="Cartera de cuero crema" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-contenido">
+            <span class="firma-hero">Luca Bellini</span>
+            <h1>COLECCIÓN ATEMPORAL</h1>
+            <p>Encuentra el detalle de cuero que va con cada persona.</p>
+            <div class="hero-botones">
+                <a href="#coleccion" onclick="filtrarPorCategoria('mujer')" class="btn-hero-outline">REGALABLES PARA ELLA</a>
+                <a href="#coleccion" onclick="filtrarPorCategoria('hombre')" class="btn-hero-outline">REGALABLES PARA ÉL</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Carrusel / Grilla de Productos -->
+    <section id="coleccion" class="seccion-productos">
+        <div class="titulo-seccion">
+            <h2>REGALABLES EXCLUSIVOS</h2>
+            <p>Detalles en cuero para que te recuerden siempre.</p>
+        </div>
+
+        <div class="carrusel-wrapper">
+            <button class="flecha-carrusel izq" onclick="desplazarCarrusel(-1)" aria-label="Anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="productos-track" id="contenedorProductos">
+                <!-- Se renderiza dinámicamente desde script.js -->
+            </div>
+
+            <button class="flecha-carrusel der" onclick="desplazarCarrusel(1)" aria-label="Siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Bloque Editorial Dividido (Estilo Captura 3 y 4) -->
+    <section id="editorial" class="editorial-split">
+        <div class="split-card">
+            <img src="billeteras.jpg" alt="Billeteras de cuero">
+            <div class="split-info">
+                <h3>BILLETERAS & TARJETEROS</h3>
+                <a href="#coleccion" onclick="filtrarPorCategoria('billeteras')" class="link-subrayado">VER COLECCIÓN</a>
+            </div>
+        </div>
+        <div class="split-card">
+            <img src="carteras_roja.jpg" alt="Carteras de cuero rojo">
+            <div class="split-info">
+                <h3>CARTERAS & CROSSBODY</h3>
+                <a href="#coleccion" onclick="filtrarPorCategoria('mujer')" class="link-subrayado">VER COLECCIÓN</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Horizontal Cuotas (Estilo Captura 5) -->
+    <section class="banner-cuotas">
+        <img src="accesorios_cuero.jpg" alt="Accesorios de cuero">
+        <div class="banner-cuotas-overlay"></div>
+        <div class="banner-cuotas-texto">
+            <h2>PAGA HASTA 6 CUOTAS SIN INTERESES</h2>
+            <p>Válido con tarjetas de crédito BCP y BBVA.</p>
+            <a href="#coleccion" class="link-subrayado blanco">VER TODO</a>
+        </div>
+    </section>
+
+    <!-- Sección Compra a tu Estilo (Estilo Captura 6) -->
+    <section id="servicios" class="compra-estilo">
+        <div class="titulo-seccion">
+            <h2>COMPRA A TU ESTILO</h2>
+            <p>De la manera más rápida y conveniente para ti.</p>
+        </div>
+
+        <div class="estilo-grid">
+            <div class="estilo-card">
+                <div class="estilo-img">
+                    <img src="compra_online.jpg" alt="Compra online">
+                </div>
+                <h4>COMPRA ONLINE Y RECOGE</h4>
+                <p>Haz tu compra en la web y recoge tu pedido en puntos autorizados.</p>
+                <button onclick="abrirInfoFlotante('recojo')" class="btn-ver-mas">VER MÁS</button>
+            </div>
+
+            <div class="estilo-card">
+                <div class="estilo-img">
+                    <img src="compra_por_WhatsApp.jpg" alt="Compra por WhatsApp">
+                </div>
+                <h4>COMPRA POR WHATSAPP</h4>
+                <p>¿Prefieres ayuda directa? Chatea con nuestros asesores y realiza tu compra.</p>
+                <button onclick="abrirInfoFlotante('whatsapp')" class="btn-ver-mas">VER MÁS</button>
+            </div>
+
+            <div class="estilo-card">
+                <div class="estilo-img">
+                    <img src="entregas_rapida.jpg" alt="Entregas rápidas">
+                </div>
+                <h4>ENTREGAS RÁPIDAS A DOMICILIO</h4>
+                <p>Compra online y recibe tu pedido hasta en 6 horas o al día siguiente.</p>
+                <button onclick="abrirInfoFlotante('envios')" class="btn-ver-mas">VER MÁS</button>
+            </div>
+
+       
+    </section>
+
+    <!-- Footer Estilo Renzo Costa (Gris con línea roja superior) -->
+    <footer class="footer">
+        <div class="footer-linea-roja"></div>
+        <div class="footer-contenido">
+            <div class="footer-suscripcion">
+                <h4>REGÍSTRATE Y OBTÉN 10% DSCTO.</h4>
+                <p>En tu primera compra</p>
+                <button class="btn-suscribete" onclick="abrirModalSuscripcion()">SUSCRÍBETE AQUÍ</button>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h5>Conócenos</h5>
+                    <ul>
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Sostenibilidad</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Visítanos</h5>
+                    <ul>
+                        <li><a href="#">Tiendas Lima</a></li>
+                        <li><a href="#">Tiendas Provincias</a></li>
+                    </ul>
+                </div>
+                <div>
